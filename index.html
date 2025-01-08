@@ -24,8 +24,11 @@
         cursor: pointer;
         transition: background-color 0.3s;
       }
+      a:active {
+        display: None;
+      }
       button:hover {
-        background-color: #ffdddd;
+        background-color: gainsboro;
       }
       img {
         border-radius: 50%;
@@ -45,7 +48,7 @@
   </head>
   <body>
     <header>
-      <h1>Rock 🪨 | Paper 📄 | Scissors ✂️</h1>
+      <h1>Rock 🪨 | Paper 📄 | <a href="#">Scissors ✂️</a></h1>
       <h2>Choose one:</h2>
       <h3>Program's choice: <span id="program-choice">None</span></h3>
     </header>
@@ -79,7 +82,7 @@
           programChoiceElem.textContent = programChoice;
 
           if (userChoice === programChoice) {
-            alert("It's a draw!");
+            console.log("draw");
           } else if (winRules[userChoice] === programChoice) {
             wins++;
             winsElem.textContent = wins;
