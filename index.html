@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>rock paper scissors</title>
+
+    <style>
+      body {
+        background-color: white;
+        padding: 0;
+        margin: 0;
+      }
+      main {
+        height: 60vh;
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+      }
+      footer > h1 {
+        display: flex;
+        justify-content: center;
+      }
+      button {
+        border: none;
+        background-color: transparent;
+        cursor: pointer;
+        transition: 1s;
+      }
+      button:hover {
+        transition: 1s;
+        background-color: red;
+      }
+      img {
+        border-radius: 50%;
+        border-style: solid;
+        border-color: gray;
+      }
+      h6,
+      h1,
+      h2 {
+        margin: 0;
+        padding: 0;
+      }
+      header > h1,
+      h6 {
+        display: flex;
+        justify-content: center;
+      }
+
+      header > h2 {
+        display: flex;
+        height: 10vh;
+        justify-content: center;
+        align-items: end;
+      }
+      header > h3 {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      #paper {
+        transform: rotate(90deg);
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>Rock 🪨 | paper 📄 | scissors ✂️</h1>
+      <h6>cod in just 1 file!</h6>
+      <h2>Choice one of this:</h2>
+      <h3>Program choice >><span id="program-instrument"> None</span></h3>
+    </header>
+    <main>
+      <button id="rock">
+        <img
+          id="rock"
+          width="200px"
+          height="100px"
+          src="https://static.vecteezy.com/system/resources/thumbnails/036/353/917/small_2x/ai-generated-gray-heavy-rock-file-of-isolated-cutout-object-on-transparent-background-with-shadow-png.png"
+          alt="rock image"
+        />
+      </button>
+      <button id="paper">
+        <img
+          id="paper"
+          width="200px"
+          height="200px"
+          src="https://png.pngtree.com/png-vector/20230902/ourmid/pngtree-white-sheet-of-paper-png-image_9531391.png"
+          alt="paper image"
+        />
+      </button>
+      <button id="scissors">
+        <img
+          id="scissors"
+          width="200px"
+          height="200px"
+          src="https://images.vexels.com/content/254863/preview/scissors-semi-flat-a88a6b.png"
+          alt="scissors image"
+        />
+      </button>
+    </main>
+    <footer>
+      <h1>count wins: <span id="wins">0</span></h1>
+      <h1>count faild: <span id="faild">0</span></h1>
+    </footer>
+    <script>
+      const paper = document.getElementById("paper");
+      const rock = document.getElementById("rock");
+      const scissors = document.getElementById("scissors");
+      paper.addEventListener("click", Ppaper);
+      rock.addEventListener("click", Rrock);
+      scissors.addEventListener("click", Sscissors);
+      const ProrgramInstrument = document.getElementById("program-instrument");
+
+      var wins = document.getElementById("wins");
+      var faild = document.getElementById("faild");
+
+      var lw = 0;
+      var lf = 0;
+
+      var ProgramChoice;
+      var UserChoice;
+      var UserChoiceN;
+      var instruments = ["rock", "paper", "scissors"];
+
+      function getRandomArbitrary(min, max) {
+        return Math.round(Math.random() * (max - min) + min);
+      }
+      function Ppaper() {
+        UserChoiceN = 1;
+        UserChoice = instruments[1];
+        Game();
+      }
+      function Rrock() {
+        UserChoiceN = 0;
+        UserChoice = instruments[0];
+        Game();
+      }
+      function Sscissors() {
+        UserChoiceN = 2;
+        UserChoice = instruments[2];
+        Game();
+      }
+
+      function Game() {
+        ProgramChoice = getRandomArbitrary(0, 2);
+        ProrgramInstrument.textContent = instruments[ProgramChoice];
+        console.log(UserChoice);
+        console.log(UserChoiceN, ProgramChoice);
+
+        // rock beat scissors and beated by paper
+        if (UserChoiceN == 0) {
+          if (ProgramChoice == 2 && UserChoiceN == 0) {
+            lw++;
+            wins.textContent = lw;
+          }
+          if (ProgramChoice == 1 && UserChoiceN == 0) {
+            lf++;
+            faild.textContent = lf;
+          }
+        }
+        // paper beat rock and beated by scissors
+        if (UserChoiceN == 1) {
+          if (ProgramChoice == 0 && UserChoiceN == 1) {
+            lw++;
+            wins.textContent = lw;
+          }
+          if (ProgramChoice == 2 && UserChoiceN == 1) {
+            lf++;
+            faild.textContent = lf;
+          }
+        }
+        // scissors beat paper and beadet by rock
+        if (UserChoiceN == 2) {
+          if (ProgramChoice == 1 && UserChoiceN == 2) {
+            lw++;
+            wins.textContent = lw;
+          }
+          if (ProgramChoice == 0 && UserChoiceN == 2) {
+            lf++;
+            faild.textContent = lf;
+          }
+        }
+      }
+    </script>
+  </body>
+</html>
